@@ -112,11 +112,11 @@ INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Ana','Huaman
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Lisa','Granada borjas','Lisa@gmail.com','55217863','942165487');
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Marcos','Sanchez lopez','Marcos@hotmail.com','45217863','962165487');
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Manuel','Torres Porras','Manuel@gmail.com','65217863','922165487');
-INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Lucifer','Estrella de la ma馻na','Lucif@hotmail.com','45217863','912165487');
+INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Lucifer','Estrella de la ma帽ana','Lucif@hotmail.com','45217863','912165487');
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Miguel','Ramos Centeno','Miguel@gmail.com','95217863','942165487');
-INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Imanol','L関ano Sim髇','Imanol@hotmail.com','85217863','992165487');
+INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Imanol','L茅vano Sim贸n','Imanol@hotmail.com','85217863','992165487');
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Gerack','Naivares Torres','gerack@gmail.com','55217863','962165487');
-INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Dario','Ca駃ta Huaman','Dario@hotmail.com','35217863','922165487');
+INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Dario','Ca帽ita Huaman','Dario@hotmail.com','35217863','922165487');
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Eythan','Portuguez cordero','eythan@gmail.com','05217863','992164487');
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Maria',' Padilla Torres','Mirtha@gmail.com','45478638','932165487');
 INSERT INTO CLIENTE( NOMCLI, APECLI, EMACLI, DNICLI, CELCLI)VALUES('Alexia','De los angeles Remuzgo','Mirtha@gmail.com','45117863','932165487');
@@ -186,9 +186,9 @@ SELECT * FROM ACTIVIDADES;
 INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('FAMILIAR VERANO',45.00,'DISFRUTA AL MAXIMO EN FAMILIA');
 INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('SOLO PARA VALIENTES',60.00,'ESCALA,MOTO, CANOTAJE');
 INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('PAQUETE 1',50.00,'CANOTAJE Y MOTO');
-INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('PAQUETE 2',30.00,'CANOTAJE, MOTO Y PASEO TUR蚐CTICO');
+INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('PAQUETE 2',30.00,'CANOTAJE, MOTO Y PASEO TUR脥SCTICO');
 INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('PAQUETE 3',70.00,'PASEO POR CASAS ABANDONADAS');
-INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('LIBERTAD AL MAXIMO',80.00,'CANOTAJE,CUATRIMOTO,PASEO TU蚐TICO,CANOPY Y RAPPEL');
+INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('LIBERTAD AL MAXIMO',80.00,'CANOTAJE,CUATRIMOTO,PASEO TU脥STICO,CANOPY Y RAPPEL');
 INSERT INTO PAQUETES(NOMPAQ,PREPAQ,DESPAQ) VALUES ('PAQUETE DE AMIGOS',70.00,'PUENTE TIBERIANO,CANOPY+PAQUETE 2');
 
 SELECT * FROM PAQUETES;
@@ -234,6 +234,51 @@ ON PAQUETES_DETALLE.IDPAQ = PAQUETES.IDPAQ
 INNER JOIN ACTIVIDADES
 ON PAQUETES_DETALLE.IDACT = ACTIVIDADES.IDACT
 ORDER BY 1;
+/* expresiones regulares*/
+/*ejemplo 1 : esto buscar谩 todas las filas en la tabla table_name donde el valor de la columna column_name contenga una ocurrencia del patr贸n especificado en la expresi贸n regular 'pattern'./*
+
+SELECT column_name
+FROM table_name
+WHERE REGEXP_INSTR(column_name, 'pattern') > 0;
+
+/*ejemplo 2:Esto reemplazar谩 todas las ocurrencias del patr贸n especificado en la columna column_name con la cadena de reemplazo 'replacement' y mostrar谩 el resultado como modified_value.*/
+
+SELECT REGEXP_REPLACE(column_name, 'pattern', 'replacement') AS modified_value
+FROM table_name;
+/* ejemplo 3:Esto extraer谩 las subcadenas de la columna column_name que coincidan con el patr贸n especificado en la expresi贸n regular 'pattern' y las mostrar谩 como extracted_value./*
+
+SELECT REGEXP_SUBSTR(column_name, 'pattern') AS extracted_value
+FROM table_name;
+
+/*ejemplo4:Esto buscar谩 todas las filas en la tabla table_name donde el valor de la columna column_name coincida con el patr贸n especificado en la expresi贸n regular 'pattern'.
+
+SELECT column_name
+FROM table_name
+WHERE REGEXP_LIKE(column_name, 'pattern');
+
+/*privilegios regulares/*
+/*ejemplo 1:Conceder el privilegio SELECT a un usuario en una tabla espec铆fica: Esto permite al usuario especificado (username) realizar operaciones de lectura (SELECT) en la tabla especificada (table_name).*/
+
+GRANT SELECT ON table_name TO username;
+
+/*ejemplo 2:Conceder los privilegios INSERT, UPDATE y DELETE a un usuario en una tabla: Esto permite al usuario especificado (username) realizar operaciones de inserci贸n (INSERT), actualizaci贸n (UPDATE) y eliminaci贸n (DELETE) en la tabla especificada (table_name)./*
+
+GRANT INSERT, UPDATE, DELETE ON table_name TO username;
+
+/*ejemplo 3: Conceder el privilegio CREATE TABLESPACE a un usuario: Esto permite al usuario especificado (username) crear nuevos tablespaces en la base de datos.*/
+
+GRANT CREATE SESSION TO username;
+
+
+/*ejemplo4: Conceder el privilegio CREATE SESSION a un usuario: Esto permite al usuario especificado (username) crear vistas en la base de datos.*/
+
+GRANT CREATE VIEW TO username;
+
+/*ejemplo6: Conceder el privilegio ALTER ANY TABLE a un usuario: Esto permite al usuario especificado (username) realizar modificaciones en cualquier tabla de la base de datos, incluyendo la estructura de la tabla.*/
+GRANT ALTER ANY TABLE TO username;
+
+/*ejemplo 7: Revocar el privilegio DELETE a un usuario en una tabla espec铆fica: Esto retira el privilegio de eliminaci贸n (DELETE) al usuario especificado (username) en la tabla especificada (table_name).*/
+REVOKE DELETE ON table_name FROM username;
 
 
 
